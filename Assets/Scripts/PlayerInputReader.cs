@@ -16,7 +16,7 @@ public class PlayerInputReader : MonoBehaviour
 
     public float MouseX { get; private set; }
     public float MouseY { get; private set; }
-    public Rig aimLayer;
+    //public Rig aimLayer;
     float aimDuration = 0.3f;
     void Update()
     {
@@ -30,11 +30,11 @@ public class PlayerInputReader : MonoBehaviour
 
         if (Input.GetMouseButton(1))
         {
-            aimLayer.weight += Time.deltaTime / aimDuration;
+            //aimLayer.weight += Time.deltaTime / aimDuration;
         }
         else
         {
-            aimLayer.weight -= Time.deltaTime / aimDuration;
+            //aimLayer.weight -= Time.deltaTime / aimDuration;
         }
     }
 
