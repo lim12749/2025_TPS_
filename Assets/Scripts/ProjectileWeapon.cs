@@ -12,8 +12,9 @@ public class ProjectileWeapon : WeaponBase
     public PlayerInputReader input;
 
     public Transform aimTarget;
-    //public AudioSource audioSource;
-    //public AudioClip audioClip;
+    public ParticleSystem muzzle;
+    public AudioSource audioSource;
+
     void Awake()
     {
         aimLine.enabled = false;
@@ -60,6 +61,8 @@ public class ProjectileWeapon : WeaponBase
         // 🔸 4. 총알 생성
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(shootDir));
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        muzzle.Play();
+        audioSource.Play();
 
         //audioSource.PlayOneShot(audioClip);
         if (rb != null)
