@@ -1,22 +1,18 @@
+using Unity.XR.OpenVR;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class Monster : MonsterBase 
 {
-    public float health = 100f;
-
-    public void TakeDamage(float amount)
+    private Animator _animator; 
+    public override void Start()
     {
-        health -= amount;// 받은데미지로 감소
-        Debug.Log($"몬스터 피격 남은 체력 : {health}");
-
-        if(health <=0)
-        {
-            Die();
-        }
+        base.Start(); //부모꺼 실행
+        _animator = GetComponent<Animator>(); // 애니메이터 컴포넌트 가져오기
     }
-    void Die()
+
+    public override void Die()
     {
-        Debug.Log("몬스터 사망");
-        Destroy(gameObject);
+        base.Die();
+        _animator.SetTrigger("Die"); // 사망 애니메이션 트리거 설정
     }
 }
